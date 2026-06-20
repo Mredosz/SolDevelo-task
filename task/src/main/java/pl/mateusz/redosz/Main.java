@@ -1,5 +1,9 @@
 package pl.mateusz.redosz;
 
+import pl.mateusz.redosz.alert.engine.AlertEngine;
+import pl.mateusz.redosz.rules.AdvisoryRule;
+import pl.mateusz.redosz.rules.LowRule;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -10,21 +14,12 @@ public class Main {
     }
 
     private static void alertFunction(List<Integer> list) {
-        for (var num : list) {
-            var output = "";
-            if (num % 3 == 0) {
-                output += "LOW";
-            }
+        var rules = List.of(new LowRule(), new AdvisoryRule());
+        var alertEngine = new AlertEngine(rules);
 
-            if (num % 5 == 0) {
-                output += "ADVISORY";
-            }
 
-            if (output.isEmpty()) {
-                output = num.toString();
-            }
-
-            System.out.println(output);
+        for (var num : list){
+            System.out.println(alertEngine.evaluate(num));
         }
     }
 }
