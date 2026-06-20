@@ -10,14 +10,21 @@ public class Main {
     }
 
     private static void alertFunction(List<Integer> list) {
-        for (var num : list){
-            if (num % 15 == 0){
-                System.out.println("LOWADVISORY");
-            } else if (num % 3 == 0){
-                System.out.println("LOW");
-            } else if (num % 5 ==0) {
-                System.out.println("ADVISORY");
-            }else System.out.println(num);
+        for (var num : list) {
+            var output = "";
+            if (num % 3 == 0) {
+                output += "LOW";
+            }
+
+            if (num % 5 == 0) {
+                output += "ADVISORY";
+            }
+
+            if (output.isEmpty()) {
+                output = num.toString();
+            }
+
+            System.out.println(output);
         }
     }
 }
