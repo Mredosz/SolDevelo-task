@@ -1,1 +1,0 @@
-# SolDevelo-task
