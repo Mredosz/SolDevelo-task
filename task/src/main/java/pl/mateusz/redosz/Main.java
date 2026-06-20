@@ -10,17 +10,17 @@ import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
-        var list = IntStream.rangeClosed(1, 105).boxed().toList();
-        alertFunction(list);
+        var numbers = IntStream.rangeClosed(1, 105).boxed().toList();
+        alertFunction(numbers);
     }
 
-    private static void alertFunction(List<Integer> list) {
+    private static void alertFunction(List<Integer> numbers) {
         var rules = List.of(new LowRule(), new AdvisoryRule(), new WarnRule());
-        var alertEngine = new AlertEngine(rules);
+        var engine = new AlertEngine(rules);
 
 
-        for (var num : list) {
-            System.out.println(alertEngine.evaluate(num));
+        for (var num : numbers) {
+            System.out.println(engine.evaluate(num));
         }
     }
 }
